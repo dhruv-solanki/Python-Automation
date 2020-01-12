@@ -11,8 +11,10 @@ img = Image.open(BytesIO(response.content))
 # img = Image.open('random.png')
 
 # making image opacity 0.5
-img = img.convert("RGBA")
-img.putalpha(128)
+# img = img.convert("RGBA")
+# img.putalpha(200)
+
+img = img.point(lambda p : p * 0.5)
 
 # getting image width and height
 width, height = img.size
@@ -37,9 +39,9 @@ font = ImageFont.truetype('fonts/Roboto-MediumItalic.ttf', size=30)
 # extracting quote and author from json data object
 quote = data['content']
 author = data['author']
-author = "> "author
+author = "> "+author
 
-# setting text color
+# setting text color white
 color = 'rgb(255, 255, 255)'
 
 # setting width and height for author line
@@ -52,7 +54,7 @@ for i in range(len(quotes)):
 	new_quote += quotes[i]+"\n"
 
 # multiline quote will be printed on image
-draw.multiline_text((x, y), new_quote, fill=color, font=font, spacing=0.5, align="left")
+draw.multiline_text((x, y), new_quote, fill=color, font=font, spacing=2, align="left")
 
 # sigleline author name printed on image
 draw.text((p, q), author, fill=color, font=font)
