@@ -37,7 +37,7 @@ font = ImageFont.truetype('fonts/Roboto-MediumItalic.ttf', size=30)
 # extracting quote and author from json data object
 quote = data['content']
 author = data['author']
-author = author+":)"
+author = "> "author
 
 # setting text color
 color = 'rgb(255, 255, 255)'
@@ -47,7 +47,7 @@ color = 'rgb(255, 255, 255)'
 
 # if quote is multiline then adjusting and making fittable in image
 new_quote = ""
-quotes = textwrap.wrap(quote, width=80)
+quotes = textwrap.wrap(quote, width=75)
 for i in range(len(quotes)):
 	new_quote += quotes[i]+"\n"
 
@@ -60,7 +60,7 @@ draw.text((p, q), author, fill=color, font=font)
 font_tip = ImageFont.truetype('fonts/Roboto-Italic.ttf', size=20)
 
 # singleline tip name printed on image
-draw.text((width-150, height-50), "@dhruv_911", fill=color, font=font_tip)
+draw.text((width-150, height-50), "@source.9", fill=color, font=font_tip)
 
 # getting current time for setting up image name
 date_time = datetime.now()
